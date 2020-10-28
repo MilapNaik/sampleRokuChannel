@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="CustomLabelList" extends="LabelList">
+
+
+<script type="text/brightscript" >
+<![CDATA[
+	sub init()
+
+		' observers
+		m.top.observeField("itemFocused", "onItemFocusedChanged")
+	end sub
+
+	sub onItemFocusedChanged(pMessage as Object)
+		index =  pMessage.getData()
+
+		if index = 1 then
+			m.top.findNode("label").opacity = 0.35
+		else
+			m.top.findNode("label").opacity = 1.0
+		end if
+
+	end sub
+
+]]>
+</script>
+
+<children>
+
+<Label
+	id="label"
+	translation="[-50, 0]"
+	opacity="0.35"
+	text="1" />
+
+</children>
+
+</component>

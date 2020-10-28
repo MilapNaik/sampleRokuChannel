@@ -3,7 +3,6 @@ sub Main()
 end sub
 
 sub showMarkupSGScreen()
-	print "in showMarkupSGScreen"
 	screen = CreateObject("roSGScreen")
 	m.port = CreateObject("roMessagePort")
 	screen.setMessagePort(m.port)

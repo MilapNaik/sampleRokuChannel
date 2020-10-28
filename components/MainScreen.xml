@@ -9,16 +9,16 @@
 		m.buttons = m.top.FindNode("buttons")
 		m.buttons.setFocus(true)
 
+		' observers
 		m.buttons.observeField("itemSelected", "onButtonsSelectedChanged")
-		' m.top.observeField("focusedChild", "onFocusedChildChanged")
 	end sub
 
 	sub onButtonsSelectedChanged(pMessage as Object)
 		index =  pMessage.getData()
 		id = m.buttons.content.getchild(index).id
-		if id = "stay"
+		if id = "stay" then
 			m.spinner.visible = false
-		else if id = "reload"
+		else if id = "reload" then
 			m.spinner.visible = true
 		end if
 
@@ -31,9 +31,9 @@
 
 <Group id="MainGroup">
 
-	<BusySpinner id="busySpinner" translation="[700, 200]" />
+	<CustomBusySpinner id="busySpinner" translation="[700, 200]" />
 
-	<LabelList
+	<CustomLabelList
 		id="buttons"
 		translation="[300, 200]"
 		inheritParentOpacity="true"
@@ -46,7 +46,7 @@
 				<MenuItemContent id="stay" title="Stay" />
 				<MenuItemContent id="reload" title="Reload" />
 			</ContentNode>
-	</LabelList>
+	</CustomLabelList>
 
 </Group>
 </children>

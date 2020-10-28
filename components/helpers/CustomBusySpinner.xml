@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<component name="BusySpinner" extends="Group">
+<component name="CustomBusySpinner" extends="Group">
 
 <script type="text/brightscript" >
 <![CDATA[
@@ -39,4 +39,5 @@
 		backgroundOpacity="1.0"/>
 
 </children>
+
 </component>

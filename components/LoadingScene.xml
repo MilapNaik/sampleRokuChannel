@@ -9,12 +9,13 @@
 		m.label = m.top.FindNode("label")
 		m.spinner = m.top.FindNode("SampleComponentLib")
 
+		' observers
 		m.spinner.observeField("loadStatus", "onLoadStatusChanged")
 	end sub
 
 	sub onLoadStatusChanged()
 		if m.spinner.loadStatus = "ready"
-			'Load Main Screen
+			'After component library is done loading, kick off main app
 			m.mainScreen = CreateObject("roSGNode", "MainScreen")
 
 			m.group.removeChild(m.label)
@@ -33,7 +34,6 @@
 </Group>
 
 </children>
-
 </component>
 
 
