@@ -36,8 +36,9 @@ while [ "$1" != "" ]; do
 done
 
 outDir=out
-appName="sampleChannel"
-outFileNamePrefix=${outDir}/${applicationName}
+appName="sampleRokuChannel"
+outFileNamePrefix=${outDir}/${appName}
+echo "${outFileNamePrefix}"
 
 userPass=$user:$password
 # remove old app

@@ -17,9 +17,9 @@
 		index =  pMessage.getData()
 		id = m.buttons.content.getchild(index).id
 		if id = "stay"
-			m.spinner.visible = 0
+			m.spinner.visible = false
 		else if id = "reload"
-			m.spinner.visible = 1
+			m.spinner.visible = true
 		end if
 
 	end sub
