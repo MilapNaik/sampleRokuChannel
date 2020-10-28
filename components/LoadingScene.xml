@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="LoadingScene" extends="Scene">
+
+<script type="text/brightscript" >
+<![CDATA[
+	sub init()
+		m.group = m.top.FindNode("group")
+		m.label = m.top.FindNode("label")
+		m.spinner = m.top.FindNode("SampleComponentLib")
+
+		m.spinner.observeField("loadStatus", "onLoadStatusChanged")
+	end sub
+
+	sub onLoadStatusChanged()
+		if m.spinner.loadStatus = "ready"
+			'Load Main Screen
+			m.mainScreen = CreateObject("roSGNode", "MainScreen")
+
+			m.group.removeChild(m.label)
+			m.label = invalid
+			m.group.appendChild(m.mainScreen)
+		end if
+	end sub
+]]>
+</script>
+
+<children>
+<ComponentLibrary id="SampleComponentLib" uri="https://milapnaik.files.wordpress.com/2020/10/samplecomponentlib.zip" />
+
+<Group id="group">
+	<Label id="label" text="Please Wait..." translation="[300, 100]" width="400" height="200" />
+</Group>
+
+</children>
+
+</component>
+
+

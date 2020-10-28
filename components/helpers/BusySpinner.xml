@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<component name="BusySpinner" extends="Group">
+
+<script type="text/brightscript" >
+<![CDATA[
+	sub init()
+		m.spinner = m.top.FindNode("loadingIndicator3")
+		m.top.observeField("visible", "onVisibleChanged")
+	end sub
+
+	sub onVisibleChanged()
+		if m.top.visible
+			m.spinner.control = "start"
+		else
+			m.spinner.control = "stop"
+		end if
+	end sub
+]]>
+</script>
+
+<children>
+
+<SampleComponentLib:LoadingIndicator
+		id="loadingIndicator3"
+		imageUri="pkg:/images/loader.png"
+		clockwise="true"
+		spinInterval="0.8"
+		fadeInterval="0.5"
+		spacing="20"
+		imageWidth="100"
+		text="Buffering...."
+		width="300"
+		height="300"
+		centered="false"
+		translation="[0,0]"
+		textPadding="10"
+		font="font:SmallBoldSystemFont"
+		backgroundColor="0xa0a0a0ff"
+		backgroundOpacity="1.0"/>
+
+</children>
+</component>

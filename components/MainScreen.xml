@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="MainScreen" extends="Group">
+
+<script type="text/brightscript" >
+<![CDATA[
+	sub init()
+		m.spinner = m.top.FindNode("busySpinner")
+		m.buttons = m.top.FindNode("buttons")
+		m.buttons.setFocus(true)
+
+		m.buttons.observeField("itemSelected", "onButtonsSelectedChanged")
+		' m.top.observeField("focusedChild", "onFocusedChildChanged")
+	end sub
+
+	sub onButtonsSelectedChanged(pMessage as Object)
+		index =  pMessage.getData()
+		id = m.buttons.content.getchild(index).id
+		if id = "stay"
+			m.spinner.visible = 0
+		else if id = "reload"
+			m.spinner.visible = 1
+		end if
+
+	end sub
+
+]]>
+</script>
+
+<children>
+
+<Group id="MainGroup">
+
+	<BusySpinner id="busySpinner" translation="[700, 200]" />
+
+	<LabelList
+		id="buttons"
+		translation="[300, 200]"
+		inheritParentOpacity="true"
+		opacity="1.0"
+		itemSize="[300, 70]"
+		vertFocusAnimationStyle="floatingFocus"
+		textHorizAlign="center"
+		drawFocusFeedback="true">
+			<ContentNode id="pageContent" role="content" >
+				<MenuItemContent id="stay" title="Stay" />
+				<MenuItemContent id="reload" title="Reload" />
+			</ContentNode>
+	</LabelList>
+
+</Group>
+</children>
+
+</component>
+
+
