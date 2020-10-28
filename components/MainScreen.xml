@@ -43,8 +43,8 @@
 		textHorizAlign="center"
 		drawFocusFeedback="true">
 			<ContentNode id="pageContent" role="content" >
-				<MenuItemContent id="stay" title="Stay" />
-				<MenuItemContent id="reload" title="Reload" />
+				<CustomContent id="stay" title="Stay" />
+				<CustomContent id="reload" title="Reload" />
 			</ContentNode>
 	</CustomLabelList>
 

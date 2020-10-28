@@ -5,6 +5,10 @@
 <script type="text/brightscript" >
 <![CDATA[
 	sub init()
+		m.fadeInText = m.top.findNode("fadeInText")
+		m.fadeInTextInterpolator = m.top.findNode("fadeInTextInterpolator")
+
+		m.label = m.top.findNode("label")
 
 		' observers
 		m.top.observeField("itemFocused", "onItemFocusedChanged")
@@ -13,10 +17,18 @@
 	sub onItemFocusedChanged(pMessage as Object)
 		index =  pMessage.getData()
 
-		if index = 1 then
-			m.top.findNode("label").opacity = 0.35
+		if index = 0 then
+			if m.fadeInText.state <> "stopped" then m.fadeInText.control = "pause"
+			m.fadeInTextInterpolator.reverse = false
+
+			m.fadeInTextInterpolator.keyValue = [m.label.opacity, 1.0]
+			m.fadeInText.control = "start"
 		else
-			m.top.findNode("label").opacity = 1.0
+			if m.fadeInText.state <> "stopped" then m.fadeInText.control = "pause"
+			m.fadeInTextInterpolator.reverse = true
+
+			m.fadeInTextInterpolator.keyValue = [0.35, m.label.opacity]
+			m.fadeInText.control = "start"
 		end if
 
 	end sub
@@ -25,6 +37,10 @@
 </script>
 
 <children>
+
+<Animation id="fadeInText" duration="1.5" easeFunction="inCubic">
+	<FloatFieldInterpolator id="fadeInTextInterpolator" key="[0.0, 1.0]" fieldToInterp="label.opacity" />
+</Animation>
 
 <Label
 	id="label"
