@@ -4,6 +4,8 @@ A sample scenegraph Roku app. Most of the code comes from https://developer.roku
 
 ### To Side Load
 
+To side load, you must enter in the username of the device, the password of the device, and the ip address in the following format:
+
 ```
 $ ./make.sh help
 $ ./make.sh --user [username] --pw [password] --ip [Device IP]
